@@ -1,10 +1,10 @@
-# Nirdhar Website
+# DocChat
 
 This repository contains the website for Nirdhar, an AI-powered knowledge base solution.
 
 ## Deployment
 
-This website is currently hosted on GitHub Pages. The live site can be accessed at [https://yourusername.github.io/repositoryname](https://yourusername.github.io/repositoryname).
+This website is currently hosted on GitHub Pages. The live site can be accessed at [https://shardulkulkarni14.github.io/DocChat](https://shardulkulkarni14.github.io/DocChat).
 
 ## Structure
 
