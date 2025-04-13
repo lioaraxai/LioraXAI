@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Mobile responsiveness -->
+    <link href="css/mobile.css" rel="stylesheet">
     <style>
         /* Base styles */
         :root {
@@ -31,6 +33,7 @@
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: var(--bs-body-color);
             line-height: 1.5;
+            overflow-x: hidden;
         }
         
         .mono {
@@ -68,6 +71,31 @@
         /* Custom gradient */
         .bg-gradient-primary {
             background: linear-gradient(to right, #4f46e5, #7e22ce);
+            position: relative;
+        }
+        
+        /* Add overlay to make background less transparent */
+        .bg-gradient-primary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+        
+        .bg-gradient-primary > .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Fixed solid background for mobile */
+        @media (max-width: 768px) {
+            .bg-gradient-primary {
+                background: #4f46e5;
+            }
         }
         
         .text-primary-custom {
@@ -102,17 +130,38 @@
             background-color: #f3f4f6;
             border-radius: 1rem;
             border-top-left-radius: 0;
-            max-width: 80%; 
+            max-width: 90%; 
             padding: 1rem;
+            word-break: break-word;
         }
         
         .chat-bubble-assistant {
             background-color: #e0e7ff;
             border-radius: 1rem;
             border-top-right-radius: 0;
-            max-width: 80%;
+            max-width: 90%;
             margin-left: auto;
             padding: 1rem;
+            word-break: break-word;
+        }
+        
+        /* Improve chat bubbles on mobile */
+        @media (max-width: 576px) {
+            .chat-bubble-user, 
+            .chat-bubble-assistant {
+                max-width: 100%;
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+            
+            .chat-bubble-assistant ol {
+                padding-left: 1.5rem;
+            }
+            
+            .mono {
+                font-size: 0.9rem;
+                word-break: break-all;
+            }
         }
         
         .step-circle {
@@ -139,12 +188,96 @@
             justify-content: center;
             margin-bottom: 1.5rem;
         }
+        
+        /* Better mobile padding and spacing */
+        @media (max-width: 768px) {
+            .py-md-6 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            .container.py-4 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            
+            h1.display-4 {
+                font-size: calc(1.375rem + 1.5vw);
+            }
+            
+            h2.display-5 {
+                font-size: calc(1.3rem + 1vw);
+            }
+            
+            /* Make lead text smaller on mobile */
+            .lead {
+                font-size: 1.1rem;
+            }
+            
+            /* Optimize spacing for mobile */
+            .mb-5 {
+                margin-bottom: 2rem !important;
+            }
+            
+            /* Optimize image sizes for mobile */
+            .img-fluid {
+                max-width: 90%;
+                height: auto;
+            }
+            
+            /* Improved feature blocks for mobile */
+            .feature-icon-circle {
+                margin: 0 auto 1rem;
+            }
+            
+            .col-md-6.col-lg-4 h3.h4,
+            .col-md-6.col-lg-4 p {
+                text-align: center;
+            }
+            
+            /* Adjust testimonials on mobile */
+            .card {
+                margin-bottom: 1rem;
+            }
+            
+            /* Improve mobile menu */
+            .navbar-collapse {
+                background-color: #fff;
+                border-radius: 0.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+            
+            /* Fix dark mode mobile menu */
+            @media (prefers-color-scheme: dark) {
+                .navbar-collapse {
+                    background-color: #1f2937;
+                }
+            }
+            
+            .navbar-nav .nav-item {
+                margin-bottom: 0.5rem;
+            }
+            
+            .navbar-nav .nav-item:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Make testimonial cards full width on smallest screens */
+            @media (max-width: 575px) {
+                .col-md-6.col-lg-4 {
+                    padding-left: 0.75rem;
+                    padding-right: 0.75rem;
+                }
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img src="static/images/logo.svg" alt="Nirdhar Logo" width="150" height="35">
@@ -190,7 +323,7 @@
                         <h1 class="display-4 fw-bold mb-4">
                             Transform Your Company's Knowledge Into an Interactive Chatbot
                         </h1>
-                        <p class="lead mb-4 text-white-50">
+                        <p class="lead mb-4 text-white">
                             Nirdhar helps you create an AI-powered knowledge base that makes information instantly accessible to your team.
                         </p>
                         <div class="d-flex flex-column flex-sm-row gap-3">
@@ -203,7 +336,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6" data-aos="fade-left">
-                        <div class="bg-white rounded-4 shadow p-4">
+                        <div class="bg-white rounded-4 shadow p-3 p-md-4">
                             <div class="d-flex flex-column gap-3">
                                 <div class="chat-bubble-user">
                                     <p class="mb-0">How do I request time off in our new HR system?</p>
@@ -326,7 +459,7 @@
         <!-- How It Works Section -->
         <section class="py-5 py-md-6 bg-light">
             <div class="container py-4">
-                <div class="row justify-content-center mb-5">
+                <div class="row justify-content-center mb-4 mb-md-5">
                     <div class="col-lg-8 text-center" data-aos="fade-up">
                         <h2 class="display-5 fw-bold mb-3">How It Works</h2>
                         <p class="lead text-secondary">Get started in minutes with minimal setup time</p>
@@ -336,7 +469,7 @@
                 <div class="row g-4 g-lg-5">
                     <!-- Step 1 -->
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-                        <div class="card border-0 bg-white h-100 text-center p-4">
+                        <div class="card border-0 bg-white h-100 text-center p-3 p-md-4">
                             <div class="card-body">
                                 <div class="step-circle">1</div>
                                 <h3 class="h4 fw-bold mb-3">Connect Your Sources</h3>
@@ -347,7 +480,7 @@
                     
                     <!-- Step 2 -->
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card border-0 bg-white h-100 text-center p-4">
+                        <div class="card border-0 bg-white h-100 text-center p-3 p-md-4">
                             <div class="card-body">
                                 <div class="step-circle">2</div>
                                 <h3 class="h4 fw-bold mb-3">Train Your AI</h3>
@@ -358,7 +491,7 @@
                     
                     <!-- Step 3 -->
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card border-0 bg-white h-100 text-center p-4">
+                        <div class="card border-0 bg-white h-100 text-center p-3 p-md-4">
                             <div class="card-body">
                                 <div class="step-circle">3</div>
                                 <h3 class="h4 fw-bold mb-3">Deploy and Refine</h3>
@@ -389,7 +522,7 @@
                 <div class="row g-4">
                     <!-- Testimonial 1 -->
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-                        <div class="card shadow-sm h-100 p-4">
+                        <div class="card shadow-sm h-100 p-3 p-md-4">
                             <div class="card-body">
                                 <div class="mb-3">
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -412,7 +545,7 @@
                     
                     <!-- Testimonial 2 -->
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card shadow-sm h-100 p-4">
+                        <div class="card shadow-sm h-100 p-3 p-md-4">
                             <div class="card-body">
                                 <div class="mb-3">
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -435,7 +568,7 @@
                     
                     <!-- Testimonial 3 -->
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card shadow-sm h-100 p-4">
+                        <div class="card shadow-sm h-100 p-3 p-md-4">
                             <div class="card-body">
                                 <div class="mb-3">
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -555,7 +688,8 @@
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            disable: window.innerWidth < 768 // Disable animations on mobile for better performance
         });
         
         // Set current year in footer
