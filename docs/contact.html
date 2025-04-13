@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Mobile responsiveness -->
+    <link href="css/mobile.css" rel="stylesheet">
     <style>
         /* Base styles */
         :root {
@@ -209,7 +211,9 @@
                             
                             <!-- Contact Form -->
                             <div class="col-md-8">
-                                <form class="row g-3" data-aos="fade-up" data-aos-delay="300">
+                                <form class="row g-3" data-aos="fade-up" data-aos-delay="300" method="post" action="/contact/">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="">
+                                    
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Name</label>
                                         <input
@@ -238,7 +242,6 @@
                                             id="company"
                                             name="company"
                                             class="form-control form-control-lg"
-                                            required
                                         />
                                     </div>
                                     
@@ -260,6 +263,12 @@
                                         >
                                             Send Message
                                         </button>
+                                    </div>
+                                    
+                                    <div class="col-12 mt-3">
+                                        <div class="alert alert-info">
+                                            <strong>Note:</strong> This form submits data to our secure server. Your information will be processed according to our privacy policy.
+                                        </div>
                                     </div>
                                 </form>
                             </div>
