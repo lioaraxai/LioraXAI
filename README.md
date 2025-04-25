@@ -11,7 +11,7 @@ This repository contains the website for LioraXAI, an AI-powered knowledge platf
 - Forms (like contact form) submit to the Django backend
 
 ### Django Application (Separate Repository)
-- Located at `/Users/shardulkulkarni/Desktop/Nirdhar/lioraxai_app/`
+- Located at `/Users/shardulkulkarni/Desktop/LioraXAI/lioraxai_app/`
 - Handles dynamic functionality including:
   - Form submissions
   - User authentication
