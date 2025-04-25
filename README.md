@@ -1,6 +1,6 @@
-# Nirdhar Website
+# LioraXAI Website
 
-This repository contains the website for Nirdhar, an AI-powered knowledge base solution. The project consists of a static marketing website (in this repository) and a Django application that handles dynamic functionality.
+This repository contains the website for LioraXAI, an AI-powered knowledge platform solution. The project consists of a static marketing website (in this repository) and a Django application that handles dynamic functionality.
 
 ## Project Structure
 
@@ -11,7 +11,7 @@ This repository contains the website for Nirdhar, an AI-powered knowledge base s
 - Forms (like contact form) submit to the Django backend
 
 ### Django Application (Separate Repository)
-- Located at `/Users/shardulkulkarni/Desktop/Nirdhar/nirdhar_app/`
+- Located at `/Users/shardulkulkarni/Desktop/Nirdhar/lioraxai_app/`
 - Handles dynamic functionality including:
   - Form submissions
   - User authentication
@@ -21,7 +21,7 @@ This repository contains the website for Nirdhar, an AI-powered knowledge base s
 ## Deployment
 
 ### Static Website
-- Hosted on GitHub Pages at [https://shardulkulkarni14.github.io/DocChat](https://shardulkulkarni14.github.io/DocChat)
+- Hosted on GitHub Pages at [https://lioaraxai.github.io/LioraXAI](https://lioaraxai.github.io/LioraXAI)
 - The `docs` directory serves as the root of the GitHub Pages site
 
 ### Django Application
@@ -60,8 +60,8 @@ Forms on the static site (like the contact form) are configured to submit to the
 ### Static Website Setup
 ```bash
 # Clone the repository
-git clone https://github.com/shardulkulkarni14/DocChat.git
-cd DocChat
+git clone https://github.com/lioaraxai/LioraXAI.git
+cd LioraXAI
 
 # Open any HTML file in a browser
 open docs/index.html
@@ -70,7 +70,7 @@ open docs/index.html
 ### Django Setup
 ```bash
 # Navigate to Django project
-cd /path/to/nirdhar/
+cd /path/to/LioraXAI-backend/
 
 # Create virtual environment
 python -m venv venv
